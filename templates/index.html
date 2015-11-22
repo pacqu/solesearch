@@ -1,5 +1,14 @@
-{% extends 'layout.html' %}
-<body>
+{% extends "layout.html" %}
+
+{% block head %}
+{{super()}}
+<style type="text/css">
+  background-color:"#ADD8E6"
+</style>
+{% endblock %}
+
+
+{% block content %}
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-offset-3">
@@ -13,4 +22,4 @@
       </div>
     </div>
   </div>
-</body>
+{% endblock %}

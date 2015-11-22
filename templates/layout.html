@@ -7,7 +7,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
     <!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu"> -->
-  
+
     <!-- Bootstrap from MaxCDN -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -19,4 +19,32 @@
     <link href="../static/sticky-footer-navbar.css" rel="stylesheet">
     {% endblock %}
   </head>
+
+  <body style="padding-top: 70px">
+    <!-- This is the start of the navigation bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="header">
+      <div class="container">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="/">Solesearch</a>
+	</div>
+	<!-- The bar collapses if the window is small -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav">
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		Query <span class="caret"></span>
+	      </a>
+	      <!-- Dropdown items -->
+	      <ul class="dropdown-menu">
+		<!-- Need to put the links to the query -->
+		<li><a href="#">Query1</a></li>
+		<li><a href="#">Query2</a></li>
+	      </ul>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+    </nav>
+    <div id="content">{% block content %}{% endblock %}</div>
+  </body>
 </html>
