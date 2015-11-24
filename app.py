@@ -11,7 +11,12 @@ def index2():
     query1 = request.form['query1']
     query2 = request.form['query2']
     query3 = request.form['query3']
-    util.
+    #util.
+    return 0
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 if __name__ == "__main__":
     app.debug = True
