@@ -1,11 +1,11 @@
 # solesearch
 answer your query with a sole search
 #Members:
-| Name            | Github
-| --------------- |
-| Derrick Lui     | [dlui220] (https://github.com/dlui220)
-| Justin Pacquing | [stinographer] (https://github.com/stinographer)
-| Jeffrey Zou     | [JeffreyZou13] (https://github.com/JeffreyZou13)
+| Name            | Github                                           |
+| --------------- |:------------------------------------------------:|
+| Derrick Lui     | [dlui220] (https://github.com/dlui220)           |
+| Justin Pacquing | [stinographer] (https://github.com/stinographer) |
+| Jeffrey Zou     | [JeffreyZou13] (https://github.com/JeffreyZou13) |
 ## to-do:
 - [ ] use google api to bring up pages
 - [ ] make a regular expression to find answers
