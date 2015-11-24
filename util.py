@@ -1,13 +1,38 @@
-import google, requests, beautifulsoup, urllib2, json
+import google, requests, bs4, urllib2, json
 
-def getData():
-    key= "AIzaSyBPILwQR9q7OBgW_NB2krK-Fc1PLNLJR0g"
-    url = ""
-    url = url%(key)
-    request = urllib2.urlopen(url)
-    result = request.read()
-    r = json.loads(result)
-    return r
+'''
+Returns List of Result URLs from Google Query 
+'''
+def getQueries(query):
+    res = google.search(query,num=10,start=0,stop=10)
+    results = []
+    l = dir(res)
+    return l
+'''
+    for r in res:
+        results.append(r)
+    return results
+'''
+
+
+'''
+Returns Contents of Page as a String
+'''
+def getPageString(u):
+    url = urllib2.urlopen(u)
+#print url
+    page = url.read().decode('ascii')
+#print page
+    soup = bs4.BeautifulSoup(page,"html.parser")
+    raw = soup.get_text(page)
+    return raw
+    
+print  getQueries("hi")
+#print getPageString(r[0])
+
+
+        
+
 
 
 
