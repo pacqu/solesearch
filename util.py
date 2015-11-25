@@ -18,7 +18,7 @@ def getPages(query):
 
 def getPageString(u):
     '''
-    Gets Page Contents as a String
+    Gets Page HTML Content as a String
     Paramater: String of URL of Page
     Returns: String of all HTML in Page
     '''
@@ -29,21 +29,18 @@ def getPageString(u):
     #raw = soup.get_text(page)
     return soup.prettify()
 
-def findName(checkList):
-    '''Find the query using regular expression and google
-    Parameters: list of pages to look through
-    Return: Results of the search in a list form
+def getPStrings(query):
     '''
-    #This is supposed to look for a name
-    #legit does not work 
-    result = []
-    regExp = ""
-    for i in checkList:
-        match = re.search(regExp, i)
-        if match:
-            for value in match.group():
-                result.append(value)
-    return result
+    Gets List of PageStrings
+    Parameter: String Query to find results
+    Returns: List of Strings of HTML of Page Results
+    '''
+    urllist=getPages(query)
+    PStrings = []
+    for u in urllist:
+        PStrings.append(u)
+    return PStrings
+    
 
 r = getPages("pi")
-print getPageString(r[0])
+#print getPageString(r[0])
