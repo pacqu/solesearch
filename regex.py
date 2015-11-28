@@ -7,7 +7,7 @@ def whoRegex():
     Parameter: None
     Returns: String regular expression for that name
     '''
-    regExp = "[A-Z]\w* [A-Z]\w*"
+    regExp = "[A-Z][a-z]+ [A-Z][a-z]+"
     return regExp
 
 def whenRegex():
@@ -15,9 +15,12 @@ def whenRegex():
     Gets the regular expression for a time
     Parameter: None
     Returns: String regular expression for the date
+    Note:
+    Format should be:
+    03/05/1992, 3/5/1992, March 5, 1992 etc.
     '''
-    regExp = "(?(/*)|{1,2}/{1,2}/{2,4})"
-    pass
+    regExp = "[0-9]{1,2}[-/][0-9]{1,2}[-/][0-9]{2,4}|[A-Z][a-z]+ [0-9]{0,2}[a-z]{2}, [0-9]{2,4}"
+    return regExp
 
 def whereRegex():
     '''
