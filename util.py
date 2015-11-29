@@ -1,4 +1,5 @@
-import google, requests, bs4, urllib2, json
+import google, bs4, urllib2, 
+from stop_words import get_stop_words
 
 
 def getPages(query):
@@ -13,7 +14,6 @@ def getPages(query):
     for i in range(10): 
         results.append(res.next())
     return results
-
 
 
 def getPageString(u):
@@ -41,6 +41,12 @@ def getPStrings(query):
         PStrings.append(u)
     return PStrings
     
+def removeStopWords(page):
+    '''
+    Returns Page's HTML Contents with stop words removed
+    Parameter: String page that hold HTML of a page
+    Returns: String of Page with Stop Words removed
+    '''
 
 r = getPages("pi")
 #print getPageString(r[0])
