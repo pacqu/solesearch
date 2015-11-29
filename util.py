@@ -46,6 +46,7 @@ def removeStopWords(page):
     Returns Page's HTML Contents with stop words removed
     Parameter: String page that hold HTML of a page
     Returns: String of Page with Stop Words removed
+    '''
     stopwords = []
     with open("stopwords.txt","r") as f:
         for line in f:
@@ -56,7 +57,6 @@ def removeStopWords(page):
             stopwords.remove(word)
     newPage = words.join(" ")
     return newPage
-    '''
 
 r = getPages("pi")
 #print getPageString(r[0])
