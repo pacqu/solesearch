@@ -1,6 +1,5 @@
 import re
 
-
 def whoRegex():
     '''
     Gets the regular expression for a name
@@ -30,15 +29,33 @@ def whereRegex():
     '''
     pass
 
-
-
+def isLegit(input):
+    '''
+    Checks if inputted name has a stop word in it
+    Parameter:String of Name 
+    Returns: True/False depending if there is/is not a stop word in name
+    '''
+    with open("stopwords.txt","r") as f:
+        text = f.read()
+        stopwords = text.splitlines()
+    namechecker = [word.lower() for word in input.split(" ")]
+    for n in namechecker:
+        if n in stopwords:
+            return False
+    return True
+    
 def getNames(input):
     '''
     Gets list of names that appear in inputted string
     Parameter: String of Text
     Returns: List of Names
     '''
-    return re.findall(whoRegex(), input)
+    names = re.findall(whoRegex(), input)
+    legitnames = []
+    for name in names:
+        if isLegit(name):
+            legitnames.append(name)
+    return legitnames
 
 def countNames(namelist):
     '''
@@ -67,7 +84,7 @@ def highestName(namedict):
             highname = name
     return highname
 
-#input = "Peter Parker the woah Peter Parker hey Uncle nasty Ben Uncle Ben wow Peter Parker testing test. Uncle Ben Peter Parker Uncle Ben Peter Parker Uncle Ben Aunt Lily"
+#input = "Peter Parker input Peter Parker Peter Parker Yes Uncle no no No Uncle Hi Man Hi Man "
 #names = getNames(input)
 #dict =  countNames(names)
 #print dict
