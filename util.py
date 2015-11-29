@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import google, bs4, urllib2 
+=======
 import google, bs4, urllib2,
+>>>>>>> master
 from stop_words import get_stop_words
 
 
@@ -26,8 +30,8 @@ def getPageString(u):
     page = url.read()
     #print page
     soup = bs4.BeautifulSoup(page,'html.parser')
-    #raw = soup.get_text(page)
-    return soup.prettify()
+    text = soup.get_text()
+    return text
 
 def getPStrings(query):
     '''
@@ -47,6 +51,12 @@ def removeStopWords(page):
     Parameter: String page that hold HTML of a page
     Returns: String of Page with Stop Words removed
     '''
+    stops = get_stop_words('english');
+    newpage = page
+    newpage = ' '.join([word for word in newpage.split() if word not in stops])
+    return newpage
+'''
+idk which one just whatever 
     stopwords = []
     with open("stopwords.txt","r") as f:
         for line in f:
@@ -57,6 +67,7 @@ def removeStopWords(page):
             stopwords.remove(word)
     newPage = words.join(" ")
     return newPage
-
+'''
 r = getPages("pi")
-#print getPageString(r[0])
+hi = getPageString(r[0])
+print removeStopWords(hi)
