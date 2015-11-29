@@ -29,3 +29,27 @@ def whereRegex():
     Returns: String regular expression for the date
     '''
     pass
+
+def getNames(input):
+    '''
+    Gets list of names that appear in inputted string
+    Parameter: String of Text
+    Returns: List of Names
+    '''
+    pass
+
+def countNames(namelist):
+    '''
+    Gets the number of times a name appears in a list
+    Parameter: List of Names
+    Returns: Dictionary where keys are the names, corresponding values are number of times name appears
+    ''' 
+    pass
+
+def highestName(namedict):
+    '''
+    Gets the name the appeared the most frequently
+    Parameter: Dictionary where keys are names, corresponding values is frequency of names
+    Returns: Name with highest frequency
+    '''
+    pass
