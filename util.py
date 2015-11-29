@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import google, bs4, urllib2 
+=======
+import google, bs4, urllib2,
+>>>>>>> master
 from stop_words import get_stop_words
 
 
@@ -11,7 +15,7 @@ def getPages(query):
     res = google.search(query,num=10,start=0,stop=10)
     results = []
     appending = res.next()
-    for i in range(10): 
+    for i in range(10):
         results.append(res.next())
     return results
 
@@ -40,7 +44,7 @@ def getPStrings(query):
     for u in urllist:
         PStrings.append(u)
     return PStrings
-    
+
 def removeStopWords(page):
     '''
     Returns Page's HTML Contents with stop words removed
@@ -51,7 +55,19 @@ def removeStopWords(page):
     newpage = page
     newpage = ' '.join([word for word in newpage.split() if word not in stops])
     return newpage
- 
+'''
+idk which one just whatever 
+    stopwords = []
+    with open("stopwords.txt","r") as f:
+        for line in f:
+            stopwords.append(line)
+    words = page.split(" ")
+    for word in words:
+        if word in stopwords:
+            stopwords.remove(word)
+    newPage = words.join(" ")
+    return newPage
+'''
 r = getPages("pi")
 hi = getPageString(r[0])
 print removeStopWords(hi)
