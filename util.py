@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import google, bs4, urllib2 
-=======
-import google, bs4, urllib2,
->>>>>>> master
-from stop_words import get_stop_words
-
+import google, bs4, urllib2, regex 
 
 def getPages(query):
     '''
@@ -26,12 +20,16 @@ def getPageString(u):
     Paramater: String of URL of Page
     Returns: String of all HTML in Page
     '''
-    url = urllib2.urlopen(u)
-    page = url.read()
-    #print page
-    soup = bs4.BeautifulSoup(page,'html.parser')
-    text = soup.get_text()
-    return text
+    #print u
+    try:
+        url = urllib2.urlopen(u)
+        page = url.read()
+        soup = bs4.BeautifulSoup(page,'html.parser')
+        text = soup.get_text()
+        return text
+    except:
+        #print 'Couldnt Open'
+        return ''
 
 def getPStrings(query):
     '''
@@ -42,32 +40,27 @@ def getPStrings(query):
     urllist=getPages(query)
     PStrings = []
     for u in urllist:
-        PStrings.append(u)
+        PStrings.append(getPageString(u))
     return PStrings
 
-def removeStopWords(page):
+def getWhoResults(query):
     '''
-    Returns Page's HTML Contents with stop words removed
-    Parameter: String page that hold HTML of a page
-    Returns: String of Page with Stop Words removed
+    Gets Answer based on the 'Who' Query provided
+    Parameter: String Query
+    Returns: String Result
     '''
-    stops = get_stop_words('english');
-    newpage = page
-    newpage = ' '.join([word for word in newpage.split() if word not in stops])
-    return newpage
-'''
-idk which one just whatever 
-    stopwords = []
-    with open("stopwords.txt","r") as f:
-        for line in f:
-            stopwords.append(line)
-    words = page.split(" ")
-    for word in words:
-        if word in stopwords:
-            stopwords.remove(word)
-    newPage = words.join(" ")
-    return newPage
-'''
-r = getPages("pi")
-hi = getPageString(r[0])
-print removeStopWords(hi)
+    pages = getPStrings(query)
+    
+    namelist = []
+    for page in pages:
+        namelist += regex.getNames(page)
+    
+    #print namelist
+    #print regex.countNames(namelist)
+    return regex.highestName(regex.countNames(namelist))
+
+#r = getPages("pi")
+#hi = getPageString(r[0])
+#print removeStopWords(hi)
+
+print getWhoResults("Who is the Principal of Stuyvesant High School?")
