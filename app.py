@@ -9,9 +9,13 @@ def index():
     else:
         query1 = request.form['querywho']
         query2 = request.form['querywhen']
-        r1 =  util.getWhoResults(query1)
-        print r1
-        return redirect(url_for("result",result=r1))
+        if not query2:
+            r1 =  util.getWhoResults(query1)
+            return redirect(url_for("result",result = r1))
+        else:
+            r2 =  util.getWhoResults(query2)
+            return redirect(url_for("result",result = r2))
+
                 
 
 @app.route("/result/<result>",)
