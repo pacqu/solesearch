@@ -29,10 +29,11 @@ def whereRegex():
     '''
     pass
 
+#--------------------Who Functions---------------------------------------#
 def isLegit(input):
     '''
     Checks if inputted name has a stop word in it
-    Parameter:String of Name 
+    Parameter:String of Name
     Returns: True/False depending if there is/is not a stop word in name
     '''
     with open("stopwords.txt","r") as f:
@@ -43,7 +44,7 @@ def isLegit(input):
         if n in stopwords:
             return False
     return True
-    
+
 def getNames(input):
     '''
     Gets list of names that appear in inputted string
@@ -62,7 +63,7 @@ def countNames(namelist):
     Gets the number of times a name appears in a list
     Parameter: List of Names
     Returns: Dictionary where keys are the names, corresponding values are number of times name appears
-    ''' 
+    '''
     namedict = {}
     for name in namelist:
         if (namedict.has_key(name)):
@@ -70,7 +71,7 @@ def countNames(namelist):
         else:
             namedict[name] = 1
     return namedict
-        
+
 
 def highestName(namedict):
     '''
@@ -83,6 +84,82 @@ def highestName(namedict):
         if namedict.get(name) > namedict.get(highname):
             highname = name
     return highname
+
+#------------------------When Functions------------------------------------#
+def getDates(input):
+    '''
+    Gets list of dates that appear in inputted string
+    Parameter: String of Text
+    Returns: List of dates
+    '''
+    dates = re.findall(whenRegex(), input)
+    actualDates = []
+    for date in dates:
+        if isActualDate(date):
+            actualDates.append(date)
+    return actualDates
+
+def isActualDate(date):
+    '''
+    Checks if inputted date is really a date and not something like 00/00/0000
+    Parameter:String of date
+    Returns: True/False depending if the date is valid/not
+    '''
+    #First let's check it in the format Month date-th, year
+    splitDate = date.split(" ")
+    if isMonth(splitDate[0]):
+        #print splitDate[1][:2] <= 31
+        if len(splitDate) > 1 and int(splitDate[1][:2]) >= 1 and int(splitDate[1][:2]) <= 31:
+            return True
+    #Checking for mm/dd, dd/mm
+    if int(date[:2]) >= 1 and int(date[:2]) <= 12:
+        if int(date[3:5]) >= 1 and int(date[3:5]) <= 31:
+            return True
+
+    if int(date[:2]) >= 1 and int(date[:2]) <= 31:
+        if int(date[3:5]) >= 1 and int(date[3:5]) <= 12:
+            return True
+    return False
+
+def isMonth(word):
+    '''
+    Checks if a word is a Month
+    Parameter:String of the word to check
+    Returns: True/False if it's a month/not respectively
+    '''
+    with open("months.txt","r") as f:
+        words = f.read()
+        months = words.splitlines()
+    if word in months:
+        return True
+    return False
+
+def countDates(dates):
+    '''
+    Gets the number of times a date appears in a list
+    Parameter: List of dates
+    Returns: Dictionary where keys are the dates, corresponding values are number of times the date appears
+    '''
+    dateDict = {}
+    for date in dates:
+        if (dateDict.has_key(date)):
+            dateDict[date] += 1
+        else:
+            dateDict[date] = 1
+    return dateDict
+
+
+def maxDate(dateDict):
+    '''
+    Gets the date that appeared the most frequently
+    Parameter: Dictionary where keys are dates, corresponding values is frequency of date
+    Returns: Date with highest frequency
+    '''
+    maxDate = dateDict.keys()[0]
+    for date in dateDict.keys():
+        if dateDict.get(date) > dateDict.get(maxDate):
+            maxDate = date
+    return maxDate
 
 #input = "Peter Parker input Peter Parker Peter Parker Yes Uncle no no No Uncle Hi Man Hi Man "
 #names = getNames(input)

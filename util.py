@@ -1,4 +1,4 @@
-import google, bs4, urllib2, regex 
+import google, bs4, urllib2, regex
 
 def getPages(query):
     '''
@@ -50,17 +50,30 @@ def getWhoResults(query):
     Returns: String Result
     '''
     pages = getPStrings(query)
-    
+
     namelist = []
     for page in pages:
         namelist += regex.getNames(page)
-    
+
     #print namelist
     #print regex.countNames(namelist)
     return regex.highestName(regex.countNames(namelist))
+
+def getWhenResults(query):
+    '''
+    Gets Answer based on the 'When' Query provided
+    Parameter: String Query
+    Returns: String Result
+    '''
+    pages = getPStrings(query)
+    namelist = []
+    for page in pages:
+        dates += regex.getDates(page)
+    return regex.maxDate(regex.countDates(dates))
 
 #r = getPages("pi")
 #hi = getPageString(r[0])
 #print removeStopWords(hi)
 
-print getWhoResults("Who is the Principal of Stuyvesant High School?")
+#print getWhoResults("Who is the Principal of Stuyvesant High School?")
+print getWhenResults("When did Shakespeare die?")
