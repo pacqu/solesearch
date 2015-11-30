@@ -95,31 +95,8 @@ def getDates(input):
     dates = re.findall(whenRegex(), input)
     actualDates = []
     for date in dates:
-        if isActualDate(date):
-            actualDates.append(date)
+        actualDates.append(date)
     return actualDates
-
-def isActualDate(date):
-    '''
-    Checks if inputted date is really a date and not something like 00/00/0000
-    Parameter:String of date
-    Returns: True/False depending if the date is valid/not
-    '''
-    #First let's check it in the format Month date-th, year
-    splitDate = date.split(" ")
-    if isMonth(splitDate[0]):
-        #print splitDate[1][:2] <= 31
-        if len(splitDate) > 1 and int(splitDate[1][:2]) >= 1 and int(splitDate[1][:2]) <= 31:
-            return True
-    #Checking for mm/dd, dd/mm
-    if int(date[:2]) >= 1 and int(date[:2]) <= 12:
-        if int(date[3:5]) >= 1 and int(date[3:5]) <= 31:
-            return True
-
-    if int(date[:2]) >= 1 and int(date[:2]) <= 31:
-        if int(date[3:5]) >= 1 and int(date[3:5]) <= 12:
-            return True
-    return False
 
 def isMonth(word):
     '''
