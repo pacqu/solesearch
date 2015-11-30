@@ -63,4 +63,4 @@ def getWhoResults(query):
 #hi = getPageString(r[0])
 #print removeStopWords(hi)
 
-print getWhoResults("Who is the Principal of Stuyvesant High School?")
+#print getWhoResults("Who is the Principal of Stuyvesant High School?")
