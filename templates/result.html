@@ -1,15 +1,23 @@
-{% extends "layout.html"%}
-{% block head %}
-  {{super()}}
-{% endblock %}
-
-<!-- Body Begins -->
-{% block content %}
-  <center>
-    <p>{{result}}</p>
-    <br>
-    <a href="/" role="button" class="btn btn-primary">
-      <span class="glyphicon glyphicon-chevron-left"></span>Back
-    </a>
-  </center>
-{% endblock %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Solesearch</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<!--Body begins-->
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h1>{{result}}</h1></div>
+			<div class="row">
+				<div class="col-sm-4" align="center">
+					{% block content %}
+					<br>
+					<a href="/" role="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-chevron-left"></span>Back
+					</a>
+					{% endblock %}

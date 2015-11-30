@@ -66,7 +66,7 @@ def getWhenResults(query):
     Returns: String Result
     '''
     pages = getPStrings(query)
-    namelist = []
+    dates = []
     for page in pages:
         dates += regex.getDates(page)
     return regex.maxDate(regex.countDates(dates))
@@ -76,4 +76,4 @@ def getWhenResults(query):
 #print removeStopWords(hi)
 
 #print getWhoResults("Who is the Principal of Stuyvesant High School?")
-print getWhenResults("When did Shakespeare die?")
+#print getWhenResults("When did Shakespeare die?")

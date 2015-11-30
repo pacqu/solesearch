@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+import util
 app = Flask(__name__)
 
 @app.route("/", methods = ["GET","POST"])
@@ -7,11 +7,15 @@ def index():
     if request.method == "GET":
         return render_template("index.html")
     else:
-        r = "You didn't input a query!"
         query1 = request.form['querywho']
         query2 = request.form['querywhen']
-        query3 = request.form['querywhere']
-        return redirect(url_for("result",result = r))
+        if not query2:
+            r1 =  util.getWhoResults(query1)
+            return redirect(url_for("result",result = r1))
+        else:
+            r2 =  util.getWhenResults(query2)
+            return redirect(url_for("result",result = r2))
+
                 
 
 @app.route("/result/<result>")
