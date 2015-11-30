@@ -1,13 +1,17 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Solesearch</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
 
-{% block head %}
-{{super()}}
-<style type="text/css">
-  background-color:"#ADD8E6"
-</style>
-{% endblock %}
 
-
+<!-- Body begins-->
 {% block content %}
   <div class="container">
     <div class="row">
@@ -23,3 +27,44 @@
     </div>
   </div>
 {% endblock %}
+		<div class="container">
+			<div class="jumbotron">
+				<h1>Solesearch </h1>
+				<p>A simple answering service created by Justin Pacquing, Jeffrey Zou, and Derrick Lui.</p> 
+			</div>
+			<div class="row">
+				<div class="col-sm-4" align="center">
+					<h3>Who?</h3>
+					<p>
+						<form method="post">
+							<input type="text" name="querywho">
+							<input type="submit" value="Submit" name="whoSubmit">
+						</form>
+					</p>
+					
+				</div>
+				<div class="col-sm-4" align="center">
+					<h3>When?</h3>
+					<p>						
+						<form method="post">
+							<input type="text" name="querywhen">
+							<input type="submit" value="Submit" name="whenSubmit">
+						</form>
+					</p>
+					
+				</div>
+				<div class="col-sm-4" align="center">
+					<h3>Where?</h3>
+					<p>						
+						<form method="post">
+							<input type="text" name="querywhere">
+							<input type="submit" value="Submit" name="whereSubmit">
+						</form>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
