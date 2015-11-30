@@ -24,8 +24,8 @@ def index2():
             r = query3
     return render_template("result.html",result = r)
 
-@app.route("/result")
-def about():
+@app.route("/result/<result>")
+def result():
     return render_template("result.html")
 
 if __name__ == "__main__":
