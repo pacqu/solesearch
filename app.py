@@ -14,7 +14,7 @@ def index():
         return redirect(url_for("result",result = r))
                 
 
-@app.route("/result/<result>",)
+@app.route("/result/<result>")
 def result(result=""):
     return render_template("result.html", result = result)
 
