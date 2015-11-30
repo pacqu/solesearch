@@ -12,4 +12,3 @@ answer your query with a sole search
 - [ ] make a pretty webpage 
 - [ ] get the result of the query and link it to the webpage
 - [ ] put the results onto the webpages
-- [ ] have an about page
