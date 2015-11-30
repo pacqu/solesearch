@@ -11,13 +11,6 @@
 	<body>
 
 
-{% block head %}
-  {{super()}}
-  <style type="text/css">
-    background-color:"#ADD8E6"
-  </style>
-{% endblock %}
-
 <!-- Body begins-->
 {% block content %}
   <div class="container">
@@ -45,7 +38,7 @@
 					<p>
 						<form method="post">
 							<input type="text" name="querywho">
-							<input type="submit" value="Submit">
+							<input type="submit" value="Submit" name="whoSubmit">
 						</form>
 					</p>
 					
@@ -55,7 +48,7 @@
 					<p>						
 						<form method="post">
 							<input type="text" name="querywhen">
-							<input type="submit" value="Submit">
+							<input type="submit" value="Submit" name="whenSubmit">
 						</form>
 					</p>
 					
@@ -65,7 +58,7 @@
 					<p>						
 						<form method="post">
 							<input type="text" name="querywhere">
-							<input type="submit" value="Submit">
+							<input type="submit" value="Submit" name="whereSubmit">
 						</form>
 					</p>
 				</div>
